@@ -1,4 +1,4 @@
-# TwitterMemeBot
+# Twitter Meme Bot
 Introduction
 =============
 "Twitter Meme Bot" is a Twitter bot that tweets memes from the meme source "ifunny.co". Twitter Meme Bot was written in Python in the Python Jupyter Notebook. 
