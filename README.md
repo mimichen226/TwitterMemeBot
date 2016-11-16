@@ -9,4 +9,10 @@ Check out the tweets written by the Twitter Meme Bot at: https://twitter.com/dai
 
 How to use the Twitter Meme Bot
 ===============================
-To use the Twitter Meme Bot, a user must have a Twitter account and have the keys and access tokens for a Twitter app (insert consumer key, consumer secret, access token, access token secret where indicated). Then, use pip to install the tweepy package. The user needs to set up the tweet API by importing tweepy and handling authentication. User can select what meme source URL to pass in to the function generate_meme_database, and then call the function meme_bot with the database passed in as an argument to tweet memes to the user's Twitter account.
+0. Sign up for a Twitter account
+1. Get the keys and access tokens for a Twitter account
+2. Use either the Python script or Jupyter Notebook script from this repository
+3. Pip install the tweepy package and matplotlib package
+4. Insert the consumer key, consumer secret, access token, and access token secret to indicated section in code
+5. Insert the meme source URL to pass in to the function generate_meme_database in the code
+6. Run program
