@@ -5,7 +5,7 @@ Introduction
 
 Check out the tweets written by the Twitter Meme Bot at: https://twitter.com/dailymemebot
 
-![alt text](https://lh3.googleusercontent.com/8cCkW3xkwyyBtV6I9cU6iFuYeJQpSKgDOs9LxOveo0_MxDmuEW6cCtLT3s6VaruWdF2eEAcpEWfrC8g=w2478-h1406-rw)
+![alt text](https://github.com/mimichen226/TwitterMemeBot/blob/master/Twitter%20Page.png?raw=true)
 
 How to use the Twitter Meme Bot
 ===============================
