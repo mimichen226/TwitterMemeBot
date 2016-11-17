@@ -5,7 +5,7 @@
 #   Python script for Twitter Meme Bot                                                   #
 #                                                                                        #
 #   Created by Mimi Chen                                                                 #
-#   November 16, 2016                                                                    #
+#   November 17, 2016                                                                    #
 #                                                                                        #
 #   Twitter Meme Bot is a an AI bot that tweets memes from the meme source "ifunny.co".  #
 #                                                                                        #
@@ -111,20 +111,21 @@ def meme_bot(meme_database):
     wait_time = 600.0 # 10 minutes
 
     # While the meme_database is not empty
-    while (meme_database):
+
+    for index in range(len(meme_database)):
         # Pull image from meme URL and save to local computer to the path called 'todaysmeme.jpg'
         # 'todaysmeme.jpg' will be overwritten with new meme with each iteration
-        save_image('todaysmeme.jpg',read_image(meme_database[0]))
+        print 'Number {} of {} memes in database'.format(index+1, len(meme_database))
+        print 'Meme url: {}'.format(meme_database[index])
 
-        # Remove meme URL from meme_database
-        meme_database.remove(meme_database[0])
+        save_image('todaysmeme.jpg',read_image(meme_database[index]))
 
         # Try to tweet the meme; catch if there's an error 
         try:
                 print 'Running bot...'
     #            display_image('todaysmeme.jpg')
                 api.update_with_media('todaysmeme.jpg')
-                print 'Waiting {} seconds...'.format(wait_time)
+                print 'Waiting {} seconds...\n'.format(wait_time)
                 time.sleep(wait_time)
 
         except tweepy.TweepError as e:
@@ -135,19 +136,26 @@ def meme_bot(meme_database):
 # MAIN EXECUTION #
 ##################
 
-# Create a historical meme database
-HIST_MEME = []
+# Create a historical meme database by running meme_bot for the first time
+print 'Using memes from the tag "FEATURED"\n'
+HIST_MEME = generate_meme_database('https://ifunny.co')
+meme_bot(HIST_MEME)
 
 while True:
+    print '\n**GENERATING NEW MEME DATABASE**\n'
     # Load memes from the "featured" page of ifunny
     meme_database = generate_meme_database('https://ifunny.co')
 
     # If memes from "featured" page of ifunny have already been tweeted, use memes from the tag "meme" on ifunny
     if (meme_database == HIST_MEME):
+        print 'Using memes from the tag "MEME"\n'
         meme_database = generate_meme_database('https://ifunny.co/tags/meme')
 
-    # Update history with the new meme_database
-    HIST_MEME = meme_database
+    else: # Using memes from "featured page"
+
+        # Update history with the new meme_database from "featured"
+        print 'Using memes from "FEATURED"\n'
+        HIST_MEME = meme_database
 
     # Tweet memes from "meme_database"
     meme_bot(meme_database)
